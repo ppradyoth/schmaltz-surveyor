@@ -112,12 +112,17 @@ def predict():
           emotion_list.append(emotion)
       return emotion_list
   d=pd.read_csv('App.csv')
+  d.head()
   x = d.iloc[:,-2].values
+  d.head()
   tv = TfidfVectorizer(max_df=0.90, min_df=2, stop_words='english',ngram_range=(1, 2),max_features=6000)
+  print(tv)
   x = tv.fit_transform(x.astype('U'))
+  print(tv)
   pickle_in = open("App.pickle","rb") 
   classifier1 = pickle.load(pickle_in)
-
+#   classifier1.fit()
+  print(classifier1)
   if request.method == 'POST':
     comment = request.form['Tweet']
     twitter_client = TwitterClient()
@@ -132,6 +137,7 @@ def predict():
     tweets = []
     ops = []
     for i,tweet in enumerate(data['clean']):
+      print(tv.transform([tweet]).toarray())
       op=classifier1.predict(tv.transform([tweet]).toarray())
       if op == [0]:
         tweets.append(data.tweets[i])
