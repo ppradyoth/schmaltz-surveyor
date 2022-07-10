@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link href="https://unpkg.com/@primer/css@^19.0.0/dist/primer.css" rel="stylesheet" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="Header">
+        <div class="Header-item">
+            <a href="#" class="Header-link f4 d-flex flex-items-center">
+                <span>Schmaltz Surveyor</span>
+            </a>
+        </div>
+        <div class="Header-item mr-0">
+            <img class="avatar" height="20" alt="@octocat" src="https://github.com/octocat.png" width="20">
+        </div>
+    </nav>
+    <main>
+        <div class="blankslate blankslate-large">
+            <img src="https://ghicons.github.com/assets/images/blue/png/Community%20forum.png" alt=""
+                class="blankslate-image" />
+            <h3 class="blankslate-heading">Live sentiment analysis on <code>{{ topic }}</code></h3>
+            <p>The following are the tweets on the topic and there sentiments.</p>
+            <form action="/result" method="post">
+                <input name="topic" class="form-control input-monospace" type="text" placeholder="Monospace input"
+                    aria-label="SHA" />
+                <select class="form-select" aria-label="Important decision" name="nResult">
+                    <option>No. of results</option>
+                    <option value="10">10</option>
+                    <option value="100">100</option>
+                    <option value="1000">1000</option>
+                </select>
+                <div class="blankslate-action">
+                    <button type="submit" class="btn btn-primary" type="button">Search</button>
+                </div>
+                <div class="blankslate-action">
+                    <button class="btn-link" type="button">Learn more</button>
+                </div>
+            </form>
+        </div>
+       <div style="width: 80%; margin: auto">
+            <div class="Box">
+                <ul>
+                    {% for tweet in tweets %}
+                    <li class="Box-row">
+                        <h3>{{ tweet['user']['name'] }}</h3>
+                        <h6>{{ tweet['user']['description'] }}</h6>
+                        <hr>
+                        <p>{{ tweet['text'] }}</p>
+                        {% if tweet['sentiment'] == 'Positive' %}
+                            <span class="Label mr-1 Label--success">Positive</span>
+                        {% else %}
+                            <span class="Label mr-1 Label--danger">Negative</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+       </div>
+    </main>
+</body>
+
+</html>

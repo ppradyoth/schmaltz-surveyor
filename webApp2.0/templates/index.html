@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sentiment Analysis on tweets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link href="https://unpkg.com/@primer/css@^19.0.0/dist/primer.css" rel="stylesheet" />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <nav class="Header">
+        <div class="Header-item">
+            <a href="#" class="Header-link f4 d-flex flex-items-center">
+                <span>Schmaltz Surveyor</span>
+            </a>
+        </div>
+        <div class="Header-item mr-0">
+            <img class="avatar" height="20" alt="@octocat" src="https://github.com/octocat.png" width="20">
+        </div>
+    </nav>
+    <main>
+        <div class="blankslate blankslate-large">
+            <img src="https://ghicons.github.com/assets/images/blue/png/Community%20forum.png" alt=""
+                class="blankslate-image" />
+            <h3 class="blankslate-heading">Live sentiment analysis on tweets</h3>
+            <p>Please search for a topic to get analysis on live tweets.</p>
+            <form action="/result" method="post">
+                <input name="topic" class="form-control input-monospace" type="text" placeholder="Monospace input"
+                    aria-label="SHA" />
+                <select class="form-select" aria-label="Important decision" name="nResult">
+                    <option>No. of results</option>
+                    <option value="10">10</option>
+                    <option value="100">100</option>
+                    <option value="1000">1000</option>
+                </select>
+                <div class="blankslate-action">
+                    <button type="submit" class="btn btn-primary" type="button">Search</button>
+                </div>
+                <div class="blankslate-action">
+                    <button class="btn-link" type="button">Learn more</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
