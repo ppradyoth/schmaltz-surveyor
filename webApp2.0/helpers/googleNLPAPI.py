@@ -14,5 +14,6 @@ def sentimentAnalyze(text:str):
     sentiment = client.analyze_sentiment(
         request={"document": document}
     ).document_sentiment
-    
+    print("Sentiment Score")
+    print(sentiment.score)
     return 'Negative' if sentiment.score < 0 else 'Positive'
