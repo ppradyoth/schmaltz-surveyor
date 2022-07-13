@@ -1,12 +1,14 @@
 import tweepy
 from tweepy import OAuthHandler
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
-ACCESS_TOKEN="1539172679416066048-wdwJRdNyA3f6rWwdZYfVaUv3R8U4PQ"
-ACCESS_TOKEN_SECRET="Me6aRljMhOSQUUcHQSQrIISbVIvxvQiOmLrUtmIblkLPR"
-CONSUMER_KEY="nKYTHw8FJ45dtxKbnURY7Nvuz"
-CONSUMER_SECRET="GxOl2B8DdpNZHOHyuXC3t532bQxFCGQ21fCaBhPGYVfnctY8fF"
-
+ACCESS_TOKEN=os.getenv('ACCESS_TOKEN')
+ACCESS_TOKEN_SECRET=os.getenv('ACCESS_TOKEN_SECRET')
+CONSUMER_KEY=os.getenv('CONSUMER_KEY')
+CONSUMER_SECRET=os.getenv('CONSUMER_SECRET')
 class TwitterClient(object):
     def __init__(self):
         #Initialization method.

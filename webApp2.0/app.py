@@ -2,9 +2,11 @@ from matplotlib.pyplot import twinx
 from helpers.twitter import TwitterClient as tw
 from helpers.googleNLPAPI import sentimentAnalyze
 from flask import Flask, render_template, url_for, request
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 app = Flask(__name__)
-
+GOOGLE_APPLICATION_CREDENTIALS=os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 @app.route('/')
 def index():
     return render_template('index.html')
