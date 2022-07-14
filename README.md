@@ -11,7 +11,7 @@ Navigate to http://127.0.0.1:8889/tree
 ```
 pip install -r requirements.txt
 cd webApp2.0
-python app.py
+python3 app.py
 ```
 Visit http://127.0.0.1:5000
 
