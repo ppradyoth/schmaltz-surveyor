@@ -9,8 +9,8 @@ jupyter notebook
 Navigate to http://127.0.0.1:8889/tree
 ### To run the LIVE Sentiment Analyser:
 ```
-cd webApp2.0
 pip install -r requirements.txt
+cd webApp2.0
 python app.py
 ```
 Visit http://127.0.0.1:5000
