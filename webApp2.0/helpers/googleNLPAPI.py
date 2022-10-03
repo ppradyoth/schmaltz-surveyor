@@ -9,7 +9,6 @@ def sentimentAnalyze(text:str):
     document = language_v1.Document(
         content=text, type_=language_v1.Document.Type.PLAIN_TEXT
     )
-
     # Detects the sentiment of the text
     sentiment = client.analyze_sentiment(
         request={"document": document}
